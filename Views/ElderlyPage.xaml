@@ -1,0 +1,421 @@
+﻿<Page x:Class="CaregiverMobile.Views.ElderlyPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:CaregiverMobile.Views"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="48" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Name="menuBtn"
+                    Height="48"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Background="#5C6BC0"
+                    BorderThickness="0"
+                    Click="menuBtn_Click"
+                    Content="&#xE700;"
+                    FontFamily="Segoe MDL2 Assets"
+                    Foreground="White" />
+
+            <Border Grid.Column="1" Background="#E8EAF6">
+                <TextBlock Name="Title"
+                           Margin="12,0"
+                           VerticalAlignment="Center"
+                           Text="Elderly" />
+            </Border>
+        </Grid>
+
+        <SplitView Name="splitview"
+                   Grid.Row="1"
+                   DisplayMode="CompactOverlay"
+                   OpenPaneLength="260">
+
+            <SplitView.Pane>
+                <Grid Background="#E8EAF6">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel>
+                        <Button Name="homeBtn"
+                                Height="48"
+                                HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Left"
+                                Background="#5C6BC0"
+                                BorderThickness="0"
+                                Click="homeBtn_Click"
+                                Foreground="White"
+                                Padding="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="48" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock HorizontalAlignment="Center"
+                                           FontFamily="Segoe MDL2 Assets"
+                                           Text="&#xE80F;" />
+                                <TextBlock Grid.Column="1"
+                                           Margin="12,0"
+                                           Text="Home" />
+                            </Grid>
+                        </Button>
+
+                        <Button Name="elderlyBtn"
+                                Height="48"
+                                Margin="4,0,0,0"
+                                HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Left"
+                                Background="#3F51B5"
+                                BorderThickness="0"
+                                Click="homeBtn_Click"
+                                Foreground="White"
+                                Padding="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="48" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock HorizontalAlignment="Center"
+                                           FontFamily="Segoe MDL2 Assets"
+                                           Text="&#xE716;" />
+                                <TextBlock Name="ElderlyName"
+                                           Grid.Column="1"
+                                           Margin="16,0"
+                                           Text="Elderly" />
+                            </Grid>
+                        </Button>
+
+                        <Button Name="profileBtn"
+                                Height="48"
+                                HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Left"
+                                Background="#5C6BC0"
+                                BorderThickness="0"
+                                Click="profileBtn_Click"
+                                Foreground="White"
+                                Padding="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="48" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock HorizontalAlignment="Center"
+                                           FontFamily="Segoe MDL2 Assets"
+                                           Text="&#xE77B;" />
+                                <TextBlock Grid.Column="1"
+                                           Margin="12,0"
+                                           Text="Profile" />
+                            </Grid>
+                        </Button>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1">
+
+                        <Button Name="settingsBtn"
+                                Height="48"
+                                HorizontalAlignment="Stretch"
+                                HorizontalContentAlignment="Left"
+                                Background="#5C6BC0"
+                                BorderThickness="0"
+                                Click="settingsBtn_Click"
+                                Foreground="White"
+                                Padding="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="48" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock HorizontalAlignment="Center"
+                                           FontFamily="Segoe MDL2 Assets"
+                                           Text="&#xE713;" />
+                                <TextBlock Grid.Column="1"
+                                           Margin="12,0"
+                                           Text="Settings" />
+                            </Grid>
+                        </Button>
+                    </StackPanel>
+
+                </Grid>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="48" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid Name="load_elderly_progressbar"
+                              Grid.Row="0"
+                              Visibility="Collapsed">
+                        <ProgressBar Height="10" IsIndeterminate="True" />
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="48" />
+                            <ColumnDefinition Width="48" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Margin="8"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       Text="&#xE707;" />
+                        <TextBlock Grid.Column="1"
+                                       Margin="0,8,0,8"
+                                       VerticalAlignment="Center"
+                                       Foreground="Gray"
+                                       Text="Current Location :"
+                                       TextWrapping="Wrap" />
+
+                        <Border Name="AlertStatus"
+                                    Grid.Column="2"
+                                    Background="Red">
+                            <TextBlock Name="AlertTB"
+                                           Margin="8,0,8,0"
+                                           VerticalAlignment="Center"
+                                           Foreground="White"
+                                           Text="Alert"
+                                           TextWrapping="Wrap" />
+                        </Border>
+
+                        <Button Name="NotificationBtn"
+                                    Grid.Column="3"
+                                    Height="48"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Background="#5C6BC0"
+                                    BorderThickness="0"
+                                    Click="NotificationBtn_Click"
+                                    Content="&#xE8BD;"
+                                    FontFamily="Segoe MDL2 Assets"
+                                    Foreground="White" />
+                        <Button Name="LocationLogBtn"
+                                    Grid.Column="4"
+                                    Height="48"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    HorizontalContentAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Background="#5C6BC0"
+                                    BorderThickness="0"
+                                    Click="LocationLogBtn_Click"
+                                    Content="&#xE7C1;"
+                                    FontFamily="Segoe MDL2 Assets"
+                                    Foreground="White" />
+
+                    </Grid>
+
+                    <Grid Grid.Row="2"
+                              Height="1"
+                              Margin="12,0,12,0"
+                              Background="#E8EAF6" />
+
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="2*" />
+                        </Grid.ColumnDefinitions>
+
+
+                        <TextBlock Name="ElderlyCoverage"
+                                       Grid.Column="0"
+                                       Margin="0,8,0,8"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       Text="INDOOR" />
+
+                        <Grid Grid.Column="1"
+                                  Width="1"
+                                  Margin="0,8,0,8"
+                                  Background="#E8EAF6" />
+
+                        <Grid Grid.Column="2">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Button Grid.Row="0"
+                                    Name="ElderlyLocationBtn"
+                                    Margin="8,8,0,8"
+                                    HorizontalAlignment="Stretch"
+                                    VerticalAlignment="Stretch"
+                                    Background="#5C6BC0"
+                                    Click="ElderlyLocation_Click"
+                                    Foreground="White">
+
+                                <TextBlock Name="ElderlyLocation"
+                                           Text="address"
+                                           TextWrapping="Wrap" />
+                            </Button>
+
+                            <Grid Grid.Row="1">
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="at: " Margin="4,0,4,0"/>
+                                <TextBlock Name="LatestLocationTime"
+                                               Grid.Column="1"/>
+                            </Grid>
+
+                        </Grid>
+
+                    </Grid>
+
+                    <Grid Grid.Row="4">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="48"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="48"/>
+                        </Grid.RowDefinitions>
+
+
+                        <ProgressBar Name="progressbar"
+                                         Grid.Row="1"
+                                         Height="10"
+                                         IsIndeterminate="True"
+                                         Visibility="Collapsed" />
+
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Text="Places List"
+                                           TextWrapping="Wrap" />
+                            <TextBlock Grid.Column="1"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           Text="Visit"
+                                           TextWrapping="Wrap" />
+                        </Grid>
+
+
+                        <ListView Name="FeatureLocationList" Grid.Row="3"
+                                      SelectionChanged="FeatureLocationList_SelectionChanged"
+                                      Margin="0">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="Black" BorderThickness="0,0,0,0" HorizontalAlignment="Stretch">
+                                        <Grid HorizontalAlignment="Stretch">
+
+
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*"/>
+                                            </Grid.RowDefinitions>
+
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="3*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock Grid.Column="0"
+                                                           Margin="4"
+                                                           HorizontalAlignment="Stretch"
+                                                           VerticalAlignment="Center"
+                                                           Text="{Binding placeaddress}"
+                                                           TextWrapping="Wrap" />
+                                            <TextBlock Grid.Column="1"
+                                                           Margin="4"
+                                                           HorizontalAlignment="Stretch"
+                                                           VerticalAlignment="Center"
+                                                           Text="{Binding visit_count}"
+                                                           TextWrapping="Wrap" />
+
+                                            <!--<Grid Grid.Row="1" Background="Gray" />-->
+
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+
+                        </ListView>
+
+                        <Grid Grid.Row="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <Button Name="SyncBtn"
+                                        Grid.Column="0"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Background="#5C6BC0"
+                                        Click="SyncBtn_Click"
+                                        Foreground="White">
+                                <TextBlock HorizontalAlignment="Center"
+                                               FontFamily="Segoe MDL2 Assets"
+                                               Text="&#xE753;" />
+                            </Button>
+
+                            <Button Name="HeatMapBtn"
+                                        Grid.Column="1"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        Background="#5C6BC0"
+                                        Click="HeatMapBtn_Click"
+                                        Foreground="White">
+                                <TextBlock HorizontalAlignment="Center"
+                                               FontFamily="Segoe MDL2 Assets"
+                                               Text="&#xE7C5;" />
+                            </Button>
+
+                        </Grid>
+                    </Grid>
+
+
+
+                </Grid>
+            </SplitView.Content>
+
+        </SplitView>
+
+    </Grid>
+</Page>

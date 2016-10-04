@@ -1,0 +1,115 @@
+﻿<Page
+    x:Class="CaregiverMobile.Views.VerifyVoice"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CaregiverMobile.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Loaded="Page_Loaded"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="48" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="#E8EAF6">
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       Text="Voice Verify" />
+        </Border>
+
+        <Grid Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="48" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="48" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <TextBlock Name="PhraseTB"
+                           Margin="8"
+                           TextWrapping="Wrap"/>
+            </Grid>
+            
+            <Grid Grid.Row="1">
+                <ProgressBar Name="recordprogressbar"
+                             Grid.Column="1" IsIndeterminate="False"
+                             Margin="12,0,12,0"/>
+            </Grid>
+            
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Name="RecordBtn"
+                                Foreground="White"
+                                Background="#5C6BC0"
+                                VerticalAlignment="Stretch"
+                                HorizontalAlignment="Stretch"
+                                Click="RecordBtn_Click">
+                    <TextBlock Text="&#xE720;" FontFamily="Segoe MDL2 Assets"/>
+                </Button>
+
+                <Button Grid.Column="1" Name="PlayBtn"
+                                Foreground="White"
+                                Background="#5C6BC0"
+                                VerticalAlignment="Stretch"
+                                HorizontalAlignment="Stretch"
+                                Click="PlayBtn_Click">
+                    <TextBlock Text="&#xE768;" FontFamily="Segoe MDL2 Assets"/>
+                </Button>
+            </Grid>
+
+            <Grid Name="progressbar"
+                  Grid.Row="2"
+                  Visibility="Collapsed">
+                <ProgressBar Height="10"
+                             VerticalAlignment="Top"
+                             IsIndeterminate="True" />
+            </Grid>
+
+        </Grid>
+        
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+            <ScrollViewer>
+                <TextBlock Name="LogBlock"
+                           FontSize="10"
+                           TextWrapping="Wrap" />
+            </ScrollViewer>
+        </Grid>
+
+        <Button Name="VerifyBtn"
+                Grid.Row="3"
+                Margin="0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="#5C6BC0"
+                BorderBrush="Transparent"
+                Click="VerifyBtn_Click"
+                Content="Verify"
+                Foreground="White"
+                IsEnabled="False" />
+
+        <Button Name="FinishBtn"
+                Grid.Row="3"
+                Margin="0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="#5C6BC0"
+                BorderBrush="Transparent"
+                Click="FinishBtn_Click"
+                Content="Login"
+                Foreground="White"
+                Visibility="Collapsed" />
+    </Grid>
+</Page>

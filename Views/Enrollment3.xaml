@@ -1,0 +1,198 @@
+﻿<Page 
+    x:Class="CaregiverMobile.Views.Enrollment3"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CaregiverMobile.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Loaded="Page_Loaded"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="48" />
+        </Grid.RowDefinitions>
+
+        <Border Background="#E8EAF6" Grid.Row="0">
+            <TextBlock Text="Voice Enrollment" FontSize="25"
+                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Border>
+
+        <Grid Grid.Row="1" Visibility="Collapsed" 
+              Name="progressbar" Height="10"
+              VerticalAlignment="Top">
+            <ProgressBar IsIndeterminate="True"  />
+        </Grid>
+
+        <Grid Name="LoadingProfile" Margin="18" Grid.Row="1">
+            <ScrollViewer>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="48"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="48"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="48"/>
+                        <RowDefinition Height="48"/>
+                        <RowDefinition Height="48"/>
+                        <RowDefinition Height="48"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="48"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="1"
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Left"
+                        Margin="12,0,0,0"
+                       Name="Step1GuideTB"
+                       Text="Profile"
+                       FontSize="15" />
+                    <CheckBox Grid.Row="1" Grid.Column="1"
+                      Margin="8"
+                      Name="ProfileCB"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Center"
+                      HorizontalContentAlignment="Center"
+                      IsEnabled="False"/>
+
+                    <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Row="0" HorizontalAlignment="Right"
+                           Margin="8,0,8,0"
+                           Text="Enrollment Counts:"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1"
+                           Name="enrollmentCountTB"
+                           Margin="8,0,8,0"/>
+
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Right"
+                           Margin="8,0,8,0"
+                           Text="Remaining Enrollment Counts:"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1"
+                           Name="remainingEnrollmentsCountTB"
+                           Margin="8,0,8,0"/>
+
+                        <TextBlock Grid.Row="2" HorizontalAlignment="Right"
+                           Margin="8,0,8,0"
+                           Text="Enrollment Status:"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1"
+                           Name="enrollmentStatusTB"
+                           Margin="8,0,8,0"/>
+
+
+
+
+                    </Grid>
+
+                    <TextBlock Grid.Row="3"
+                       Name="Step2GuideTB"
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Left"
+                        Margin="12,0,0,0"
+                       Text="Enroll Phrase"
+                       FontSize="15" />
+                    <CheckBox Margin="8" Grid.Row="3" Grid.Column="1"
+                              Name="VoiceCB"
+                              HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              HorizontalContentAlignment="Center"
+                              IsEnabled="False"/>
+                    
+                    <Grid Grid.Row="4" Grid.ColumnSpan="2">
+                        <TextBlock Name="PhraseTB"
+                           Margin="8"
+                           TextWrapping="Wrap"/>
+                    </Grid>
+
+                    <Grid Grid.Row="5">
+                        <ProgressBar Name="recordprogressbar"
+                             Grid.Column="1" IsIndeterminate="False"
+                             Margin="12,0,12,0"/>
+                    </Grid>
+                    <Grid Grid.Row="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0" Name="RecordBtn"
+                                Foreground="White"
+                                Background="#5C6BC0"
+                                VerticalAlignment="Stretch"
+                                HorizontalAlignment="Stretch"
+                                Click="RecordBtn_Click">
+                            <TextBlock Text="&#xE720;" FontFamily="Segoe MDL2 Assets"/>
+                        </Button>
+
+                        <Button Grid.Column="1" Name="PlayBtn"
+                                Foreground="White"
+                                Background="#5C6BC0"
+                                VerticalAlignment="Stretch"
+                                HorizontalAlignment="Stretch"
+                                Click="PlayBtn_Click">
+                            <TextBlock Text="&#xE768;" FontFamily="Segoe MDL2 Assets"/>
+                        </Button>
+                    </Grid>
+
+                    <Button Grid.Row="7" Name="ResetEnrollBtn"
+                            Width="100"
+                            Foreground="White"
+                            Background="#5C6BC0"
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Left"
+                            Click="ResetEnrollBtn_Click">
+                        <TextBlock Text="&#xE72C;" FontFamily="Segoe MDL2 Assets"/>
+                    </Button>
+
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+
+
+
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+            <ScrollViewer Name="ScrollLogBlock">
+                <TextBlock Name="LogBlock" TextWrapping="Wrap"
+                           FontSize="10"/>
+            </ScrollViewer>
+        </Grid>
+
+        <Button Grid.Row="3" Content="Create Profile" Name="CreateProfileBtn"
+                Background="#5C6BC0" Foreground="White" 
+                BorderBrush="Transparent" 
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                Margin="0" Click="CreateProfileBtn_Click"/>
+
+        <Button Grid.Row="3" Content="Enroll" Name="EnrollBtn"
+                Background="#5C6BC0" Foreground="White" 
+                BorderBrush="Transparent" Visibility="Collapsed"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                Margin="0" Click="EnrollBtn_Click"/>
+
+        <Button Grid.Row="3" Content="Next" Name="NextBtn"
+                Background="#5C6BC0" Foreground="White" 
+                BorderBrush="Transparent" Visibility="Collapsed"
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                Margin="0" Click="NextBtn_Click"/>
+
+    </Grid>
+</Page>

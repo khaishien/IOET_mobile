@@ -1,0 +1,74 @@
+﻿<Page
+    x:Class="CaregiverMobile.Views.Elderly_TrackingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CaregiverMobile.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="0" Background="#E8EAF6">
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="25"
+                       Text="Tracking Page" />
+        </Grid>
+
+        <Button Name="Request_List"
+                Grid.Row="1"
+                Margin="6"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="#5C6BC0"
+                Click="Request_Click"
+                Content="Pending Request"
+                Foreground="White"
+                FontSize="30" />
+
+        <Button Name="Current_Monitor_List"
+                Grid.Row="2"
+                Margin="6"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="#5C6BC0"
+                Click="Current_Monitor_List_Click"
+                Content="Monitor List"
+                Foreground="White"
+                FontSize="30" />
+
+        <Button Name="Send_Request"
+                Grid.Row="3"
+                Margin="6"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="#5C6BC0"
+                Click="Send_Request_Click"
+                Content="Send Request"
+                Foreground="White"
+                FontSize="30" />
+
+
+        <Button Name="BackBtn"
+                Grid.Row="4"
+                Margin="6"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="#5C6BC0"
+                Click="BackBtn_Click"
+                FontSize="30" 
+                Content="Back"
+                Foreground="White" />
+    </Grid>
+</Page>

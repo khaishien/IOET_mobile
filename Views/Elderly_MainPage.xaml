@@ -1,0 +1,315 @@
+﻿<Page x:Class="CaregiverMobile.Views.Elderly_MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:CaregiverMobile.Views"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Loaded="Page_Loaded"
+      mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="1" Background="#E8EAF6">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="48" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="48" />
+                <ColumnDefinition Width="48" />
+                <ColumnDefinition Width="48" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48" />
+                <RowDefinition Height="48" />
+            </Grid.RowDefinitions>
+
+            <Ellipse Grid.Column="0">
+                <Ellipse.Fill>
+                    <ImageBrush>
+                        <ImageBrush.ImageSource>
+                            <BitmapImage x:Name="ElderlyProfilePic" UriSource="/Assets/Square44x44Logo.targetsize-24_altform-unplated.png" />
+                        </ImageBrush.ImageSource>
+                    </ImageBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+
+            <TextBlock Name="ElderlyName"
+                       Grid.Column="1"
+                       Grid.ColumnSpan="2"
+                       Margin="12"
+                       FontSize="15"
+                       Text="Elderly Name" />
+
+            <Button Name="SettingBtn"
+                    Grid.Column="3"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Background="#5C6BC0"
+                    Click="SettingBtn_Click"
+                    Foreground="White">
+                <TextBlock HorizontalAlignment="Center"
+                           FontFamily="Segoe MDL2 Assets"
+                           Text="&#xE713;" />
+            </Button>
+
+            <Button Name="LogBtn"
+                    Grid.Column="4"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Background="#5C6BC0"
+                    Click="LogBtn_Click"
+                    Foreground="White">
+                <TextBlock HorizontalAlignment="Center"
+                           FontFamily="Segoe MDL2 Assets"
+                           Text="&#xE90A;" />
+            </Button>
+
+            <Button Name="InitNfcBtn"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Width="48"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Background="#5C68C0"
+                    Click="InitNfcBtn_Click"
+                    Foreground="White">
+                <TextBlock HorizontalAlignment="Center"
+                           FontFamily="Segoe MDL2 Assets"
+                           Text="&#xE8EA;" />
+            </Button>
+
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition Width="48" />
+                </Grid.ColumnDefinitions>
+
+                <Button Name="NfcBtn"
+                        Grid.Column="0"
+                        Width="48"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Stretch"
+                        Background="#5C68C0"
+                        Click="NfcBtn_Click"
+                        Foreground="White">
+                    <TextBlock HorizontalAlignment="Center"
+                               FontFamily="Segoe MDL2 Assets"
+                               Text="&#xE768;" />
+                </Button>
+
+                <Button Name="NfcStopBtn"
+                        Grid.Column="1"
+                        Width="48"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Stretch"
+                        Background="#5C68C0"
+                        Click="NfcStopBtn_Click"
+                        Foreground="White">
+                    <TextBlock HorizontalAlignment="Center"
+                               FontFamily="Segoe MDL2 Assets"
+                               Text="&#xE71A;" />
+                </Button>
+
+            </Grid>
+
+
+            <Button Name="RefreshBtn"
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Background="#5C6BC0"
+                    Click="RefreshBtn_Click"
+                    Foreground="White">
+                <TextBlock HorizontalAlignment="Center"
+                           FontFamily="Segoe MDL2 Assets"
+                           Text="&#xE72C;" />
+            </Button>
+
+
+            <Button Name="TrackBtn"
+                    Grid.Row="1"
+                    Grid.Column="4"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Background="#5C6BC0"
+                    Click="TrackBtn_Click"
+                    Foreground="White">
+                <TextBlock HorizontalAlignment="Center"
+                           FontFamily="Segoe MDL2 Assets"
+                           Text="&#xE716;" />
+            </Button>
+
+
+        </Grid>
+
+        <Grid Name="load_profile_progressbar"
+              Grid.Row="2"
+              Visibility="Collapsed">
+            <ProgressBar Height="10" IsIndeterminate="True" />
+        </Grid>
+
+
+        <Grid Name="LogView"
+              Grid.Row="2"
+              Grid.RowSpan="3"
+              Background="Black"
+              Canvas.ZIndex="9"
+              Opacity="0.6"
+              Visibility="Collapsed">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Button Name="CloseLogBtn"
+                    Height="32"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Left"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Click="CloseLogBtn_Click"
+                    Foreground="White"
+                    Padding="0">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="32" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontFamily="Segoe MDL2 Assets"
+                               Text="&#xE711;" />
+                    <TextBlock Grid.Column="1"
+                               Margin="12,0"
+                               Text="Log" />
+                </Grid>
+            </Button>
+
+            <Grid Grid.Row="1">
+                <ScrollViewer>
+                    <TextBlock Name="StatusBlock"
+                               FontSize="10"
+                               Foreground="White"
+                               TextWrapping="Wrap" />
+                </ScrollViewer>
+            </Grid>
+
+        </Grid>
+
+        <Button Name="NavigateHomeBtn"
+                Grid.Row="3"
+                Margin="6"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="#FFEB3B"
+                Click="NavigateHomeBtn_Click"
+                Content="GO HOME"
+                FontSize="30" />
+
+        <Button Name="NotificationBtn"
+                Grid.Row="4"
+                Margin="6"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Background="#009688"
+                Click="NotificationBtn_Click"
+                Content="ASK"
+                FontSize="30" />
+
+        <Grid Grid.Row="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="48" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="48" />
+                <ColumnDefinition Width="48" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1"
+                  Width="1"
+                  Margin="0,8,0,8"
+                  Background="#E8EAF6" />
+
+            <Button Name="StartTrackingBtn"
+                    Grid.Column="3"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Background="#5C6BC0"
+                    Click="StartTrackingBtn_Click"
+                    Foreground="White">
+                <TextBlock HorizontalAlignment="Center"
+                           FontFamily="Segoe MDL2 Assets"
+                           Text="&#xE707;" />
+            </Button>
+
+            <Button Name="StopTrackingBtn"
+                    Grid.Column="4"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Stretch"
+                    Background="#5C6BC0"
+                    Click="StopTrackingBtn_Click"
+                    Foreground="White">
+                <TextBlock HorizontalAlignment="Center"
+                           FontFamily="Segoe MDL2 Assets"
+                           Text="&#xE711;" />
+            </Button>
+
+            <TextBlock Grid.Row="0"
+                       Grid.Column="0"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       Text="Status :" />
+
+            <TextBlock Name="Status"
+                       Grid.Row="0"
+                       Grid.Column="2"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="Red"
+                       Text="OFF" />
+
+
+        </Grid>
+
+
+        <TextBlock x:Name="LocationDisabledMessage"
+                   Grid.Row="6"
+                   Margin="0,15,0,0"
+                   FontStyle="Italic"
+                   TextWrapping="Wrap"
+                   Visibility="Collapsed">
+
+            <Run Text="This app is not able to access Location. Go to " />
+            <Hyperlink NavigateUri="ms-settings:privacy-location">
+                <Run Text="Settings" />
+            </Hyperlink>
+            <Run Text=" to check the location privacy settings." />
+        </TextBlock>
+
+    </Grid>
+</Page>

@@ -1,0 +1,138 @@
+﻿<Page
+    x:Class="CaregiverMobile.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CaregiverMobile.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Loaded="Page_Loaded"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="48"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Name="menuBtn" Height="48" BorderThickness="0"
+                    HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+                    VerticalAlignment="Stretch" VerticalContentAlignment="Center"
+                    Click="menuBtn_Click" Background="#5C6BC0" Foreground="White"
+                    Content="&#xE700;" FontFamily="Segoe MDL2 Assets" />
+
+            <Button Name="backBtn" Height="48" BorderThickness="0" Visibility="Collapsed"
+                    HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+                    VerticalAlignment="Stretch" VerticalContentAlignment="Center"
+                    Click="backBtn_Click" Background="#5C6BC0" Foreground="White"
+                    Content="&#xE0C4;" FontFamily="Segoe MDL2 Assets" />
+
+            <Border Background="#E8EAF6" Grid.Column="1">
+                <TextBlock Name ="Title" Text="Settings"  Margin="12,0" VerticalAlignment="Center" />
+            </Border>
+        </Grid>
+
+        <SplitView Name="splitview" Grid.Row="1" DisplayMode="CompactOverlay"
+                   OpenPaneLength="260">
+
+            <SplitView.Pane>
+                <Grid Background="#E8EAF6" Name="Pane">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel>
+                        <Button Name="homeBtn" Height="48" BorderThickness="0" Padding="0"
+                                Background="#5C6BC0" Foreground="White" Click="homeBtn_Click"
+                                HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="48" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="&#xE80F;" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Center" />
+                                <TextBlock Text="Home" Margin="12,0" Grid.Column="1" />
+                            </Grid>
+                        </Button>
+
+                        <Button Name="profileBtn" Height="48" BorderThickness="0" Padding="0"
+                                Background="#5C6BC0" Foreground="White" Click="profileBtn_Click"
+                                HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="48" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="&#xE77B;" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Center" />
+                                <TextBlock Text="Profile" Margin="12,0" Grid.Column="1" />
+                            </Grid>
+                        </Button>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1">
+
+                        <Button Name="settingsBtn" Height="48" BorderThickness="0" Padding="0"
+                                Background="#3F51B5" Foreground="White" Click="settingsBtn_Click"
+                                HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="48" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="&#xE713;" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Center" />
+                                <TextBlock Text="Settings" Margin="12,0" Grid.Column="1" />
+                            </Grid>
+                        </Button>
+                    </StackPanel>
+
+                </Grid>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="48"/>
+                        <RowDefinition Height="48"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBox  BorderBrush="LightGray" Name="ipaddress"
+                                  PlaceholderText="IP Address" VerticalAlignment="Center"
+                                  Margin="5" Grid.Column="0"/>
+                        <Button Name="submitIpBtn" Background="#3F51B5"
+                                Grid.Column="1" Content="Save" Margin="8"
+                                Click="submitIpBtn_Click"
+                                VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                    </Grid>
+
+                    
+                    <Grid Grid.Row="1">
+                        <Button Name="LogoutBtn" Content="Logout" Margin="6"
+                                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                Background="#3F51B5" Click="LogoutBtn_Click"/>
+                    </Grid>
+
+
+
+                </Grid>
+            </SplitView.Content>
+
+        </SplitView>
+
+    </Grid>
+</Page>
